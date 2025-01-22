@@ -276,6 +276,12 @@ p {
     color: #252525;
 }
 
+.completed {
+    text-decoration: line-through;
+    font-style: italic;
+    color: rgba(37, 37, 37, 0.5);
+}
+
 .icon-list {
     display: flex;
     gap: 12px;

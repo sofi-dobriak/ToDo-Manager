@@ -10,6 +10,11 @@ const refs = {
     modalForm: document.querySelector(".js-modal-form"),
 
     taskList: document.querySelector(".js-task-list"),
+
+    emptyBlock: document.querySelector(".js-empty-block"),
+
+    iconUpdate: document.querySelector(".icon-pencil"),
+    iconDelete: document.querySelector(".icon-trash"),
 };
 
 let taskIdCounter = 0;
@@ -17,18 +22,18 @@ let taskIdCounter = 0;
 refs.addTaskButton.addEventListener("click", onButtonClick);
 refs.cancelModalBtn.addEventListener("click", onButtonClick);
 
-refs.modalBackDrop.addEventListener("click", onBackdropClick);
-
-refs.modalForm.addEventListener("submit", onFormSubmit);
-
-function onButtonClick() {
-    refs.modalBackDrop.classList.toggle("is-open");
-}
-
-function onBackdropClick(e) {
+refs.modalBackDrop.addEventListener("click", (e) => {
     if (e.target === e.currentTarget) {
         closeModal();
     }
+});
+
+refs.modalForm.addEventListener("submit", onFormSubmit);
+
+refs.taskList.addEventListener("click", onTaskInteraction);
+
+function onButtonClick() {
+    refs.modalBackDrop.classList.toggle("is-open");
 }
 
 function closeModal() {
@@ -43,6 +48,8 @@ function onFormSubmit(e) {
     if (!inputValue) {
         alert("Please, enter a note");
         return;
+    } else {
+        refs.emptyBlock.style.display = "none";
     }
 
     const dataNotes = {
@@ -54,6 +61,35 @@ function onFormSubmit(e) {
 
     refs.modalForm.reset();
     refs.modalBackDrop.classList.remove("is-open");
+}
+
+function onTaskInteraction(e) {
+    // обробка видалення
+    if (e.target.closest(".icon-trash")) {
+        const taskItem = e.target.closest(".task-item");
+
+        if (taskItem) {
+            taskItem.remove();
+        }
+    }
+
+    // якщо список порожній
+    if (refs.taskList.children.length === 0) {
+        refs.emptyBlock.style.display = "block";
+    }
+
+    // обробка виконаності завдання
+    if (e.target.classList.contains("checkbox-input")) {
+        const checkbox = e.target;
+        const taskItem = checkbox.closest(".task-item");
+        const taskText = taskItem.querySelector(".note-title");
+
+        if (checkbox.checked) {
+            taskText.classList.add("completed");
+        } else {
+            taskText.classList.remove("completed");
+        }
+    }
 }
 
 function taskTamplate(taskObject) {

@@ -2,41 +2,29 @@
 
 const refs = {
     modalBackDrop: document.querySelector(".js-modal-backdrop"),
-
     addTaskButton: document.querySelector(".js-add-task"),
     cancelModalBtn: document.querySelector(".js-btn-cancel"),
-
     modalWindow: document.querySelector(".js-modal-window0"),
     modalForm: document.querySelector(".js-modal-form"),
-
     taskList: document.querySelector(".js-task-list"),
-
     emptyBlock: document.querySelector(".js-empty-block"),
-
-    iconUpdate: document.querySelector(".icon-pencil"),
-    iconDelete: document.querySelector(".icon-trash"),
+    statusSelect: document.getElementById("status"),
 };
 
 refs.addTaskButton.addEventListener("click", onButtonClick);
 refs.cancelModalBtn.addEventListener("click", onButtonClick);
-
 refs.modalBackDrop.addEventListener("click", onBackdropClick);
-
 refs.modalForm.addEventListener("submit", onFormSubmit);
-
 refs.taskList.addEventListener("click", onTaskInteraction);
+refs.statusSelect.addEventListener("change", filterTasks);
 
 function onButtonClick() {
     refs.modalBackDrop.classList.toggle("is-open");
 }
 
-function closeModal() {
-    refs.modalBackDrop.classList.remove("is-open");
-}
-
 function onBackdropClick(e) {
     if (e.target === e.currentTarget) {
-        closeModal();
+        refs.modalBackDrop.classList.remove("is-open");
     }
 }
 
@@ -63,20 +51,6 @@ function onFormSubmit(e) {
     refs.modalBackDrop.classList.remove("is-open");
 }
 
-function deleteTask(e) {
-    if (e.target.closest(".icon-trash")) {
-        const taskItem = e.target.closest(".task-item");
-
-        if (taskItem) {
-            taskItem.remove();
-        }
-    }
-
-    if (refs.taskList.children.length === 0) {
-        refs.emptyBlock.style.display = "block";
-    }
-}
-
 function toggleTaskCompletion(e) {
     if (e.target.classList.contains("checkbox-input")) {
         const checkbox = e.target;
@@ -88,6 +62,20 @@ function toggleTaskCompletion(e) {
         } else {
             taskText.classList.remove("completed");
         }
+    }
+}
+
+function deleteTask(e) {
+    if (e.target.closest(".icon-trash")) {
+        const taskItem = e.target.closest(".task-item");
+
+        if (taskItem) {
+            taskItem.remove();
+        }
+    }
+
+    if (refs.taskList.children.length === 0) {
+        refs.emptyBlock.style.display = "block";
     }
 }
 
@@ -108,24 +96,24 @@ function editTask(e) {
 
         input.focus();
 
-        input.addEventListener("keydown", (e) => {
-            if (e.key === "Enter") {
-                const newText = input.value.trim();
+        const updateTask = (e) => updateTaskText(e, input, taskText, originalText);
 
-                if (newText === "") {
-                    taskText.textContent = originalText;
-                    alert("Please, enter a task");
-                } else {
-                    taskText.textContent = newText;
-                }
-                input.remove();
-            }
-        });
+        input.addEventListener("keydown", updateTask);
+        input.addEventListener("blur", updateTask);
+    }
+}
 
-        input.addEventListener("blur", () => {
+function updateTaskText(e, input, taskText, originalText) {
+    if (e.key === "Enter" || e.type === "blur") {
+        const newText = input.value.trim();
+
+        if (newText === "") {
             taskText.textContent = originalText;
-            input.remove();
-        });
+        } else {
+            taskText.textContent = newText;
+        }
+
+        input.remove();
     }
 }
 
@@ -135,7 +123,28 @@ function onTaskInteraction(e) {
     editTask(e);
 }
 
+function filterTasks(e) {
+    const selectedStatus = e.target.value;
+    const tasks = document.querySelectorAll(".task-item");
+
+    tasks.forEach((task) => {
+        const taskText = task.querySelector(".note-title");
+        const isCompleted = taskText.classList.contains("completed");
+
+        if (selectedStatus === "All") {
+            task.style.display = "block";
+        } else if (selectedStatus === "Complete" && isCompleted) {
+            task.style.display = "block";
+        } else if (selectedStatus === "Incomplete" && !isCompleted) {
+            task.style.display = "block";
+        } else {
+            task.style.display = "none";
+        }
+    });
+}
+
 let taskIdCounter = 0;
+
 function taskTamplate(taskObject) {
     taskIdCounter++;
 

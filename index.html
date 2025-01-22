@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="./img/logo.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ToDo Manager</title>
+    <link rel="stylesheet" href="./css/styles.css" />
+</head>
+
+<body>
+    <header class="header">
+        <h1 class="header-title">TODO LIST</h1>
+    </header>
+
+    <main>
+        <section class="section">
+            <div class="container">
+
+                <!-- Search -->
+                <form class="task-form">
+                    <div class="task-label-input-container">
+                        <label class="task-label" for="search-note"></label>
+                        <div class="input-button-container">
+                            <input class="task-input" type="text" id="search-note" name="search-note"
+                                placeholder="Search note...">
+                            <button class="search-button">
+                                <svg class="search-icon" width="20" height="20">
+                                    <use href="./img/symbol-defs.svg#icon-search"></use>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Select -->
+                    <select class="form-select-list" name="status" id="status">
+                        <option class="form-select-item" value="All">ALL</option>
+                        <option class="form-select-item" value="Complete">COMPLETE</option>
+                        <option class="form-select-item" value="Incomplete">INCOMPLETE</option>
+                    </select>
+
+
+                    <!-- Theme -->
+                    <button class="theme-button" type="button">
+                        <svg class="theme-icon" width="20" height="20">
+                            <use href="./img/symbol-defs.svg#icon-moon"></use>
+                        </svg>
+                    </button>
+                </form>
+
+                <!-- Empty -->
+                <div class="empty-img-text-container">
+                    <picture>
+                        <source srcset="./img/empty.webp 1x, ./img/empty@2x.webp 2x" media="(min-width: 750px)"
+                            type="image/webp">
+                        <source srcset="./img/empty.png 1x, ./img/empty@2x.png 2x" media="(min-width: 750px)"
+                            type="image/png">
+                        <img class="empty-img" src="./img/empty.png" alt="Detective image">
+                    </picture>
+
+                    <p class="empty-text">Empty...</p>
+                </div>
+
+                <!-- Task List -->
+                <div class="task-list-container">
+                    <ul class="task-list js-task-list"></ul>
+                </div>
+
+                <!-- Add Task Button -->
+                <button class="add-button js-add-task">
+                    <svg class="add-icon" width="24" height="24">
+                        <use href="./img/symbol-defs.svg#icon-plus"></use>
+                    </svg>
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal Window -->
+    <div class="modal-backdrop js-modal-backdrop">
+        <div class="modal-window js-modal-window">
+            <h2 class="modal-title">New Note</h2>
+
+            <form class="modal-form js-modal-form">
+                <input class="modal-input" type="text" id="text-note" name="text-note" placeholder="Input your note...">
+
+                <ul class="button-list">
+                    <li class="button-item">
+                        <button class="btn-cancel js-btn-cancel" type="button">Cancel</button>
+                    </li>
+                    <li class="button-item">
+                        <button class="btn-apply js-btn-apply" type="submit">Apply</button>
+                    </li>
+                </ul>
+            </form>
+        </div>
+    </div>
+
+    <script src="./js/index.js"></script>
+</body>
+
+</html>

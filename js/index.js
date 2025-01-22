@@ -17,16 +17,10 @@ const refs = {
     iconDelete: document.querySelector(".icon-trash"),
 };
 
-let taskIdCounter = 0;
-
 refs.addTaskButton.addEventListener("click", onButtonClick);
 refs.cancelModalBtn.addEventListener("click", onButtonClick);
 
-refs.modalBackDrop.addEventListener("click", (e) => {
-    if (e.target === e.currentTarget) {
-        closeModal();
-    }
-});
+refs.modalBackDrop.addEventListener("click", onBackdropClick);
 
 refs.modalForm.addEventListener("submit", onFormSubmit);
 
@@ -38,6 +32,12 @@ function onButtonClick() {
 
 function closeModal() {
     refs.modalBackDrop.classList.remove("is-open");
+}
+
+function onBackdropClick(e) {
+    if (e.target === e.currentTarget) {
+        closeModal();
+    }
 }
 
 function onFormSubmit(e) {
@@ -63,8 +63,7 @@ function onFormSubmit(e) {
     refs.modalBackDrop.classList.remove("is-open");
 }
 
-function onTaskInteraction(e) {
-    // обробка видалення
+function deleteTask(e) {
     if (e.target.closest(".icon-trash")) {
         const taskItem = e.target.closest(".task-item");
 
@@ -73,12 +72,12 @@ function onTaskInteraction(e) {
         }
     }
 
-    // якщо список порожній
     if (refs.taskList.children.length === 0) {
         refs.emptyBlock.style.display = "block";
     }
+}
 
-    // обробка виконаності завдання
+function toggleTaskCompletion(e) {
     if (e.target.classList.contains("checkbox-input")) {
         const checkbox = e.target;
         const taskItem = checkbox.closest(".task-item");
@@ -92,6 +91,51 @@ function onTaskInteraction(e) {
     }
 }
 
+function editTask(e) {
+    const target = e.target;
+
+    if (target.closest(".icon-pencil") || target.closest(".note-title")) {
+        const taskItem = target.closest(".task-item");
+        const taskText = taskItem.querySelector(".note-title");
+        const originalText = taskText.textContent;
+
+        const input = document.createElement("input");
+        input.type = "text";
+        input.value = originalText;
+        input.classList.add("input-edit");
+        taskText.innerHTML = "";
+        taskText.appendChild(input);
+
+        input.focus();
+
+        input.addEventListener("keydown", (e) => {
+            if (e.key === "Enter") {
+                const newText = input.value.trim();
+
+                if (newText === "") {
+                    taskText.textContent = originalText;
+                    alert("Please, enter a task");
+                } else {
+                    taskText.textContent = newText;
+                }
+                input.remove();
+            }
+        });
+
+        input.addEventListener("blur", () => {
+            taskText.textContent = originalText;
+            input.remove();
+        });
+    }
+}
+
+function onTaskInteraction(e) {
+    deleteTask(e);
+    toggleTaskCompletion(e);
+    editTask(e);
+}
+
+let taskIdCounter = 0;
 function taskTamplate(taskObject) {
     taskIdCounter++;
 

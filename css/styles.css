@@ -117,18 +117,19 @@ p {
 .form-select-list {
     font-weight: bold;
     font-size: 16px;
-    line-height: 1;
+    line-height: 1.5;
     border: 2px solid #5850dd;
     height: 38px;
     background-color: #5850dd;
     border-radius: 5px;
     color: #f7f7f7;
 
-    padding-right: 40px;
-    padding-left: 16px;
+    padding-left: 6px;
+    padding-right: 6px;
+
+    text-align: center;
 
     appearance: none;
-    background-image: url('/img/check.svg');
     background-repeat: no-repeat;
     background-position: calc(100% - 10px) center;
     background-size: 16px;
@@ -155,7 +156,7 @@ p {
     background-color: #f7f7f7;
     font-weight: bold;
     font-size: 16px;
-    line-height: 1;
+    line-height: 1.5;
     color: #6c63ff;
 }
 
@@ -238,8 +239,7 @@ p {
 /* ===== NOTEST ===== */
 
 .task-list-container {
-    max-width: 520px;
-    margin: 0 auto;
+    max-width: 720px;
 }
 
 .check-input-text-container {
@@ -291,10 +291,12 @@ p {
 }
 
 .note-title {
-    font-weight: 600;
-    font-size: 18px;
-    line-height: 1;
+    max-width: 600px;
+    font-size: 16px;
+    line-height: 1.5;
     color: #252525;
+    white-space: normal;
+    word-wrap: break-word;
 }
 
 .completed {
@@ -309,7 +311,7 @@ p {
     background-color: transparent;
     border-radius: 5px;
     padding: 8px 16px;
-    width: 400px;
+    width: 600px;
     height: 38px;
 }
 

@@ -1,17 +1,20 @@
 "use strict";
 
 const refs = {
+    searchInput: document.querySelector("#search-note"),
     modalBackDrop: document.querySelector(".js-modal-backdrop"),
     addTaskButton: document.querySelector(".js-add-task"),
     cancelModalBtn: document.querySelector(".js-btn-cancel"),
-    modalWindow: document.querySelector(".js-modal-window0"),
+    modalWindow: document.querySelector(".js-modal-window"),
     modalForm: document.querySelector(".js-modal-form"),
+    modalInput: document.querySelector(".modal-input"),
     taskList: document.querySelector(".js-task-list"),
     emptyBlock: document.querySelector(".js-empty-block"),
     statusSelect: document.getElementById("status"),
     themeButton: document.querySelector(".theme-button"),
 };
 
+refs.searchInput.addEventListener("input", searchTask);
 refs.addTaskButton.addEventListener("click", onButtonClick);
 refs.cancelModalBtn.addEventListener("click", onButtonClick);
 refs.modalBackDrop.addEventListener("click", onBackdropClick);
@@ -20,8 +23,34 @@ refs.taskList.addEventListener("click", onTaskInteraction);
 refs.statusSelect.addEventListener("change", filterTasks);
 refs.themeButton.addEventListener("click", changeTheme);
 
+document.addEventListener("keydown", (e) => {
+    if (e.code === "KeyO") {
+        onButtonClick();
+    }
+});
+
+function searchTask(e) {
+    e.preventDefault();
+
+    const searchQery = e.target.value.toLowerCase();
+    const tasks = document.querySelectorAll(".task-item");
+
+    tasks.forEach((task) => {
+        const taskText = task.querySelector(".note-title").textContent.toLowerCase();
+
+        if (taskText.includes(searchQery)) {
+            task.style.display = "block";
+        } else {
+            task.style.display = "none";
+        }
+    });
+}
+
 function onButtonClick() {
     refs.modalBackDrop.classList.toggle("is-open");
+    setTimeout(() => {
+        refs.modalInput.focus();
+    }, 200);
 }
 
 function onBackdropClick(e) {
@@ -109,7 +138,7 @@ function updateTaskText(e, input, taskText, originalText) {
     if (e.key === "Enter" || e.type === "blur") {
         const newText = input.value.trim();
 
-        if (newText === "") {
+        if (newText !== "") {
             taskText.textContent = originalText;
         } else {
             taskText.textContent = newText;

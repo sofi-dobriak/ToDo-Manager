@@ -4,7 +4,12 @@
 
 body {
     font-family: 'Montserrat', sans-serif;
+    background-color: #f7f7f7;
+    color: #252525;
+    transition: background-color 0.3s, color 0.3s;
 }
+
+
 
 .container {
     max-width: 750px;
@@ -37,6 +42,7 @@ p {
     text-align: center;
     margin-top: 40px;
     margin-bottom: 18px;
+    color: #252525;
 }
 
 /* ===== TASK FORM ===== */
@@ -61,6 +67,7 @@ p {
     padding: 8px 16px;
     display: flex;
     justify-content: space-between;
+
 }
 
 .task-input {
@@ -69,8 +76,11 @@ p {
     width: 590px;
     font-weight: 500;
     font-size: 16px;
+    background-color: transparent;
+    color: #6c63ff;
 }
 
+.task-input:hover,
 .task-input:focus {
     outline: none;
 }
@@ -98,7 +108,7 @@ p {
     fill: #6c63ff;
 }
 
-.search-button:hover .search-icon {
+.search-icon {
     fill: #5850dd;
 }
 
@@ -124,6 +134,9 @@ p {
     background-size: 16px;
 
     cursor: pointer;
+
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s,
+        color 0.3s;
 }
 
 .form-select-list:hover,
@@ -158,16 +171,22 @@ p {
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 .theme-button:hover,
 .theme-button:focus {
     background-color: #5850dd;
-    box-shadow: 0 0 4px 0 #6c63ff;
 }
 
-.theme-icon {
+.theme-icon-moon {
     fill: #f7f7f7;
+    display: block;
+}
+
+.theme-icon-sun {
+    fill: #f7f7f7;
+    display: none;
 }
 
 /* ===== EMPTY ===== */
@@ -199,10 +218,11 @@ p {
     padding: 15px;
     border-radius: 50%;
     background-color: #6c63ff;
-    box-shadow: 0 0 4px 0 #6c63ff;
     bottom: 32px;
     right: 8px;
     cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s,
+        color 0.3s;
 }
 
 .add-button:hover,
@@ -220,7 +240,6 @@ p {
 .task-list-container {
     max-width: 520px;
     margin: 0 auto;
-
 }
 
 .check-input-text-container {
@@ -240,8 +259,8 @@ p {
 }
 
 .checkbox {
-    width: 26px;
-    height: 26px;
+    width: 24px;
+    height: 24px;
     border: 1px solid #6c63ff;
     border-radius: 2px;
     display: inline-flex;
@@ -273,9 +292,8 @@ p {
 
 .note-title {
     font-weight: 600;
-    font-size: 20px;
+    font-size: 18px;
     line-height: 1;
-    text-transform: uppercase;
     color: #252525;
 }
 
@@ -287,7 +305,7 @@ p {
 
 .input-edit {
     font-size: 16px;
-    border: 1px solid #6c63ff;
+    border: none;
     background-color: transparent;
     border-radius: 5px;
     padding: 8px 16px;
@@ -327,19 +345,24 @@ p {
     align-items: center;
     justify-content: center;
     padding: 0;
+
+    cursor: pointer;
 }
 
-.icon-button:hover .icon-pencil,
+.icon-pencil,
+.icon-trash {
+    transition: stroke 0.3s, color 0.3s;
+}
+
+.icon-button:hover,
 .icon-button:focus .icon-pencil {
     stroke: #6c63ff;
-    cursor: pointer;
     outline: none;
 }
 
 .icon-button:hover .icon-trash,
 .icon-button:focus .icon-trash {
     stroke: #e50000;
-    cursor: pointer;
 }
 
 /* ===== MODAL WINDOW ===== */
@@ -362,7 +385,9 @@ p {
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
 }
+
 
 .modal-backdrop.is-open {
     opacity: 1;
@@ -374,6 +399,7 @@ p {
     border-radius: 16px;
     width: 500px;
     height: 289px;
+    border: 1px solid #f7f7f7;
     background-color: #f7f7f7;
     padding: 18px 30px;
 }
@@ -382,6 +408,7 @@ p {
     text-align: center;
     margin-bottom: 24px;
 }
+
 
 .modal-input {
     font-size: 16px;
@@ -426,6 +453,7 @@ p {
 
     background-color: transparent;
     cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 .btn-cancel:hover {
@@ -449,9 +477,76 @@ p {
 
     background-color: #6c63ff;
     cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 .btn-apply:hover {
     background-color: #f7f7f7;
     color: #6c63ff;
+}
+
+/* ===== DARK THEME ===== */
+
+.dark {
+    background-color: #252525;
+    color: #f7f7f7;
+}
+
+.dark .header-title {
+    color: #f7f7f7
+}
+
+.dark .input-button-container {
+    border-color: #f7f7f7
+}
+
+.dark .task-input {
+    color: #f7f7f7
+}
+
+.dark .search-icon {
+    fill: #f7f7f7;
+}
+
+.dark .empty-text {
+    color: #f7f7f7
+}
+
+.dark .modal-window {
+    border-color: #f7f7f7;
+    background-color: #252525;
+}
+
+.dark .modal-title {
+    color: #f7f7f7
+}
+
+.dark .modal-input {
+    border-color: #f7f7f7;
+    color: #f7f7f7;
+}
+
+.dark .modal-input::placeholder {
+    color: #666666;
+}
+
+.dark .btn-apply:hover {
+    color: #f7f7f7;
+    background-color: #252525;
+}
+
+.dark .note-title {
+    color: #f7f7f7;
+}
+
+.dark .input-edit {
+    color: #f7f7f7;
+}
+
+.dark .theme-button .theme-icon-moon {
+    display: none;
+}
+
+.dark .theme-button .theme-icon-sun {
+    display: block;
 }

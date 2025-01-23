@@ -9,6 +9,7 @@ const refs = {
     taskList: document.querySelector(".js-task-list"),
     emptyBlock: document.querySelector(".js-empty-block"),
     statusSelect: document.getElementById("status"),
+    themeButton: document.querySelector(".theme-button"),
 };
 
 refs.addTaskButton.addEventListener("click", onButtonClick);
@@ -17,6 +18,7 @@ refs.modalBackDrop.addEventListener("click", onBackdropClick);
 refs.modalForm.addEventListener("submit", onFormSubmit);
 refs.taskList.addEventListener("click", onTaskInteraction);
 refs.statusSelect.addEventListener("change", filterTasks);
+refs.themeButton.addEventListener("click", changeTheme);
 
 function onButtonClick() {
     refs.modalBackDrop.classList.toggle("is-open");
@@ -141,6 +143,16 @@ function filterTasks(e) {
             task.style.display = "none";
         }
     });
+}
+
+function changeTheme() {
+    const isDark = document.body.classList.toggle("dark");
+    localStorage.setItem("theme", isDark ? "dark" : "");
+}
+
+const savedTheme = localStorage.getItem("theme");
+if (savedTheme === "dark") {
+    document.body.classList.add("dark");
 }
 
 let taskIdCounter = 0;

@@ -10,7 +10,7 @@ function taskTamplate(taskObject) {
                     id="note-check-${taskIdCounter}" name="note-check-${taskIdCounter}">
                 <label class="checkbox" for="note-check-${taskIdCounter}">
                     <svg class="checkbox-label-icon" width="18" height="18">
-                        <use href="./img/symbol-defs.svg#icon-check"></use>
+                        <use href="./img/icons.svg#icon-check"></use>
                     </svg>
                 </label>
             </div>
@@ -20,14 +20,14 @@ function taskTamplate(taskObject) {
             <li class="icon-item">
                 <button class="icon-button" type="button">
                     <svg class="icon-pencil" width="15" height="15">
-                        <use href="./img/symbol-defs.svg#icon-pencil"></use>
+                        <use href="./img/icons.svg#icon-pencil"></use>
                     </svg>
                 </button>
             </li>
             <li class="icon-item">
                 <button class="icon-button" type="button">
                     <svg class="icon-trash" width="18" height="18">
-                        <use href="./img/symbol-defs.svg#icon-trash"></use>
+                        <use href="./img/icons.svg#icon-trash"></use>
                     </svg>
                 </button>
             </li>

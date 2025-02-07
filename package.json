@@ -6,7 +6,12 @@
   "scripts": {
     "start": "vite",
     "build": "vite build --base=/ToDo-Manager/",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "push": "git add .&& git commit -m 'update'&& git push"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sofi-dobriak/ToDo-Manager"
   },
   "devDependencies": {
     "glob": "^11.0.0",

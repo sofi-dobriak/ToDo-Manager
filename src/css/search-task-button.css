@@ -1,0 +1,17 @@
+.search-button {
+    margin-left: 8px;
+    border: none;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.search-icon {
+    fill: #6c63ff;
+}
+
+.search-icon {
+    fill: #5850dd;
+}

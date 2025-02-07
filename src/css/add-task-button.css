@@ -1,0 +1,29 @@
+.container {
+    position: relative;
+}
+
+.add-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    border: 2px solid transparent;
+    padding: 15px;
+    border-radius: 50%;
+    background-color: #6c63ff;
+    bottom: 32px;
+    right: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s,
+        color 0.3s;
+}
+
+.add-button:hover,
+.add-button:focus {
+    border-color: #6c63ff;
+    background-color: #534cc2;
+}
+
+.add-icon {
+    fill: #f7f7f7;
+}

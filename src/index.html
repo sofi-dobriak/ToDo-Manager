@@ -1,23 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vanilla App Template</title>
-    <link rel="stylesheet" href="./css/styles.css" />
-  </head>
-  <body>
-    <load src="./partials/header.html" icon-path="img/sprite.svg#logo" />
 
-    <main>
-      <!-- Loads the specified .html file -->
-      <load src="./partials/vite-promo.html" />
-      <load src="./partials/badges.html" />
-    </main>
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="./img/logo.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>To Do Manager</title>
+  <link rel="stylesheet" href="./css/styles.css" />
+</head>
 
-    <load src="./partials/footer.html" />
+<body>
+  <header class="header">
+    <h1 class="header-title">TO DO LIST</h1>
+  </header>
 
-    <script type="module" src="./main.js"></script>
-  </body>
+  <main>
+    <section class="section">
+      <div class="container">
+
+        <form class="task-form">
+          <load src="./partials/search-task-form.html" />
+          <load src="./partials/search-filter-list.html" />
+          <load src="./partials/theme-button.html" />
+        </form>
+
+        <load src="./partials/empty-image.html" />
+        <load src="./partials/notes.html" />
+        <load src="./partials/add-task-button.html" />
+      </div>
+    </section>
+
+    <load src="./partials/modal-window.html" />
+  </main>
+
+
+
+  <script src="./main.js" type="module" defer></script>
+</body>
+
 </html>

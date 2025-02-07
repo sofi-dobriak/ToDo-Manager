@@ -1,0 +1,128 @@
+.task-list-container {
+    max-width: 720px;
+}
+
+.check-input-text-container {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.task-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #a6a1fe;
+    margin-bottom: 18px;
+    position: relative;
+}
+
+.checkbox {
+    width: 24px;
+    height: 24px;
+    border: 1px solid #6c63ff;
+    border-radius: 2px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    fill: transparent;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border 0.2s ease, fill 0.2s ease;
+}
+
+.checkbox-input {
+    display: none;
+}
+
+.checkbox-input:checked+.checkbox {
+    background-color: #6c63ff;
+    border: none;
+}
+
+.checkbox-input:checked+.checkbox .checkbox-label-icon {
+    fill: #f7f7f7;
+}
+
+.checkbox-input:focus+.checkbox {
+    outline: none;
+    border: 2px solid #6c63ff;
+}
+
+.note-title {
+    max-width: 600px;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #252525;
+    white-space: normal;
+    word-wrap: break-word;
+}
+
+.completed {
+    text-decoration: line-through;
+    font-style: italic;
+    color: rgba(37, 37, 37, 0.5);
+}
+
+.input-edit {
+    font-size: 16px;
+    border: none;
+    background-color: transparent;
+    border-radius: 5px;
+    padding: 8px 16px;
+    width: 600px;
+    height: 38px;
+}
+
+.input-edit:focus {
+    outline: none;
+}
+
+.icon-list {
+    display: none;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.task-item:hover .icon-list {
+    display: flex;
+    gap: 12px;
+}
+
+.icon-item {
+    fill: none;
+    stroke-width: 1px;
+    stroke: #cdcdcd;
+}
+
+.icon-button {
+    background-color: transparent;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+
+    cursor: pointer;
+}
+
+.icon-pencil,
+.icon-trash {
+    transition: stroke 0.3s, color 0.3s;
+}
+
+.icon-button:hover,
+.icon-button:focus .icon-pencil {
+    stroke: #6c63ff;
+    outline: none;
+}
+
+.icon-button:hover .icon-trash,
+.icon-button:focus .icon-trash {
+    stroke: #e50000;
+}

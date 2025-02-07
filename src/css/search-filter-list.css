@@ -1,0 +1,45 @@
+.form-select-list {
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 1.5;
+    border: 2px solid #5850dd;
+    height: 38px;
+    background-color: #5850dd;
+    border-radius: 5px;
+    color: #f7f7f7;
+
+    padding-left: 6px;
+    padding-right: 6px;
+
+    text-align: center;
+
+    appearance: none;
+    background-repeat: no-repeat;
+    background-position: calc(100% - 10px) center;
+    background-size: 16px;
+
+    cursor: pointer;
+
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s,
+        color 0.3s;
+}
+
+.form-select-list:hover,
+.form-select-list:focus {
+    outline: none;
+    border-color: #6c63ff;
+    background-color: #534cc2;
+}
+
+.option-container {
+    border: 1px solid #6c63ff;
+}
+
+.form-select-item {
+    border: transparent;
+    background-color: #f7f7f7;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #6c63ff;
+}

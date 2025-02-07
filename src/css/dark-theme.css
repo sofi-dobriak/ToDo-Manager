@@ -1,0 +1,63 @@
+.dark {
+    background-color: #252525;
+    color: #f7f7f7;
+}
+
+.dark .header-title {
+    color: #f7f7f7
+}
+
+.dark .input-button-container {
+    border-color: #f7f7f7
+}
+
+.dark .task-input {
+    color: #f7f7f7
+}
+
+.dark .search-icon {
+    fill: #f7f7f7;
+}
+
+.dark .empty-text {
+    color: #f7f7f7
+}
+
+.dark .modal-window {
+    border-color: #f7f7f7;
+    background-color: #252525;
+}
+
+.dark .modal-title {
+    color: #f7f7f7
+}
+
+.dark .modal-input {
+    border-color: #f7f7f7;
+    color: #f7f7f7;
+}
+
+.dark .modal-input::placeholder {
+    color: #666666;
+}
+
+.dark .btn-apply:hover {
+    color: #f7f7f7;
+    background-color: #252525;
+}
+
+.dark .note-title {
+    color: #f7f7f7;
+}
+
+.dark .input-edit {
+    color: #f7f7f7;
+}
+
+.dark .theme-button .theme-icon-moon {
+    display: none;
+}
+
+.dark .theme-button .theme-icon-sun {
+    display: block;
+}

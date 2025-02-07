@@ -7,7 +7,7 @@
     "start": "vite",
     "build": "vite build --base=/ToDo-Manager/",
     "preview": "vite preview",
-    "push": "git add .&& git commit -m 'update'&& git push"
+    "push": "git add .&& git commit -m 'update' && git push"
   },
   "repository": {
     "type": "git",

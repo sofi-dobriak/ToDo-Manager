@@ -30,6 +30,12 @@ export default defineConfig(({ command }) => {
             if (assetInfo.name && assetInfo.name.endsWith('.html')) {
               return '[name].[ext]';
             }
+            if (
+              assetInfo.name &&
+              assetInfo.name.match(/\.(png|jpe?g|gif|svg)$/)
+            ) {
+              return 'assets/[name][extname]'; // Зображення та SVG без хешу
+            }
             return 'assets/[name]-[hash][extname]';
           },
         },

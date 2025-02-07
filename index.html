@@ -1,128 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vanilla-app-template/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vanilla App Template</title>
-    <script type="module" crossorigin src="/vanilla-app-template/index.js"></script>
-    <link rel="stylesheet" crossorigin href="/vanilla-app-template/assets/styles-DvPDDfy5.css">
-  </head>
-  <body>
-    <header class="header">
-  <div class="container">
-    <nav class="nav">
-      <a class="nav-logo" href="./index.html" aria-label="Site logo">
-        <svg class="nav-logo-icon" width="100" height="30">
-          <use href="/vanilla-app-template/assets/sprite-E8vg0sBb.svg#logo"></use>
-        </svg>
-      </a>
-      <ul class="nav-list">
-        <li class="nav-item">
-          <a class="nav-link {=$highlight-act}" href="./page-2.html">Page 2</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link {=$highlight-curr}" href="./page-3.html">Page 3</a>
-        </li>
-      </ul>
-    </nav>
-  </div>
-</header>
 
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/ToDo-Manager/assets/logo-BJXbd1k-.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>To Do Manager</title>
+  <script type="module" crossorigin src="/ToDo-Manager/index.js"></script>
+  <link rel="stylesheet" crossorigin href="/ToDo-Manager/assets/index-DPVj4otF.css">
+</head>
 
-    <main>
-      <!-- Loads the specified .html file -->
-      <section class="vite-promo">
-  <div class="container">
-    <div class="vite-promo-thumb">
-      <a
-        class="vite-promo-link"
-        href="https://vitejs.dev/"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Link to Vite official website"
-        title="Vite.js  build tool"
-      >
-        <!-- Path to images as from index.html file -->
-        <img
-          class="pic"
-          src="/vanilla-app-template/assets/vite-logo-9o_aqrTe.png"
-          alt="Vite logo"
-          width="640"
-          height="640"
-        />
-      </a>
+<body>
+  <header class="header">
+    <h1 class="header-title">TO DO LIST</h1>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="container">
+
+        <form class="task-form">
+          <div class="task-label-input-container">
+    <label class="task-label" for="search-note"></label>
+    <div class="input-button-container">
+        <input class="task-input" type="text" id="search-note" name="search-note" placeholder="Search note...">
+        <button class="search-button">
+            <svg class="search-icon" width="20" height="20">
+                <use href="/ToDo-Manager/assets/symbol-defs-BlNPB8hg.svg#icon-search"></use>
+            </svg>
+        </button>
     </div>
-    <h1 class="main-title">
-      <span class="main-title-gradient">Vite</span>
-      Template by
-      <a
-        class="main-title-link"
-        href="https://github.com/goitacademy/vanilla-app-template"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        GoIT
-      </a>
-    </h1>
-  </div>
-</section>
+</div>
+          <!-- Select -->
+<select class="form-select-list js-form-select-list" name="status" id="status">
+    <option class="form-select-item" value="All">ALL</option>
+    <option class="form-select-item" value="Complete">COMPLETE</option>
+    <option class="form-select-item" value="Incomplete">INCOMPLETE</option>
+</select>
+          <!-- Theme -->
+<button class="theme-button" type="button">
+    <svg class="theme-icon-moon" width="20" height="20">
+        <use href="/ToDo-Manager/assets/symbol-defs-BlNPB8hg.svg#icon-moon"></use>
+    </svg>
+    <svg class="theme-icon-sun" width="20" height="20">
+        <use href="/ToDo-Manager/assets/symbol-defs-BlNPB8hg.svg#icon-sun"></use>
+    </svg>
+</button>
+        </form>
 
-      <article class="badges">
-  <div class="container">
-    <ul class="badges-list">
-      <li class="badges-item">
-        <a
-          class="badges-link"
-          href="https://www.npmjs.com/package/vite-plugin-html-inject"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          HTML Inject
-        </a>
-      </li>
-      <li class="badges-item">
-        <a
-          class="badges-link"
-          href="https://www.npmjs.com/package/vite-plugin-full-reload"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Full Reload
-        </a>
-      </li>
-      <li class="badges-item">
-        <a
-          class="badges-link"
-          href="https://www.npmjs.com/package/postcss-sort-media-queries"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Sort Media Queries
-        </a>
-      </li>
-    </ul>
-  </div>
-</article>
+        <!-- Empty -->
+<div class="empty-img-text-container js-empty-block">
+    <img class="empty-img" src="/ToDo-Manager/assets/empty-BUSsf5np.png" alt="Detective image" width="220">
+    <p class="empty-text">Empty...</p>
+</div>
+        <!-- Task List -->
+<div class="task-list-container">
+    <ul class="task-list js-task-list"></ul>
+</div>
+        <!-- Add Task Button -->
+<button class="add-button js-add-task">
+    <svg class="add-icon" width="24" height="24">
+        <use href="/ToDo-Manager/assets/symbol-defs-BlNPB8hg.svg#icon-plus"></use>
+    </svg>
+</button>
+      </div>
+    </section>
 
-    </main>
+    <!-- Modal Window -->
+<div class="modal-backdrop js-modal-backdrop">
+    <div class="modal-window js-modal-window">
+        <h2 class="modal-title">New Note</h2>
 
-    <footer class="footer">
-  <div class="container">
-    <p class="footer-desc">
-      Made with ✨ by
-      <a
-        class="footer-link"
-        href="https://goit.global/ua/"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        GoIT team
-      </a>
-    </p>
-  </div>
-</footer>
+        <form class="modal-form js-modal-form">
+            <input class="modal-input" type="text" id="text-note" name="text-note" placeholder="Input your note..."
+                autofocus>
+
+            <ul class="button-list">
+                <li class="button-item">
+                    <button class="btn-cancel js-btn-cancel" type="button">Cancel</button>
+                </li>
+                <li class="button-item">
+                    <button class="btn-apply js-btn-apply" type="submit">Apply</button>
+                </li>
+            </ul>
+        </form>
+    </div>
+</div>
+  </main>
 
 
-  </body>
+
+</body>
+
 </html>

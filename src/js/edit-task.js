@@ -6,7 +6,7 @@ function editTask(e) {
   if (target.closest('.icon-pencil') || target.closest('.note-title')) {
     const taskItem = target.closest('.task-item');
     const taskText = taskItem.querySelector('.note-title');
-    const originalText = taskText.textContent;
+    const originalText = taskText.textContent.trim();
 
     const input = document.createElement('input');
     input.type = 'text';

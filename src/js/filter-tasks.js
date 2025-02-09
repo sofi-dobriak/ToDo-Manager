@@ -7,11 +7,11 @@ function filterTasks(e) {
     const isCompleted = taskText.classList.contains('completed');
 
     if (selectedStatus === 'All') {
-      task.style.display = 'block';
+      task.style.display = 'flex';
     } else if (selectedStatus === 'Complete' && isCompleted) {
-      task.style.display = 'block';
+      task.style.display = 'flex';
     } else if (selectedStatus === 'Incomplete' && !isCompleted) {
-      task.style.display = 'block';
+      task.style.display = 'flex';
     } else {
       task.style.display = 'none';
     }

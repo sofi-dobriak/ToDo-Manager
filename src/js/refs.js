@@ -1,7 +1,7 @@
 import searchTask from './search-task';
 import onButtonClick from './open-modal-window';
 import onBackdropClick from './close-modal-window';
-import onFormSubmit from './add-tasks';
+import { onFormInput, onFormSubmit, initPage } from './add-tasks';
 import onTaskInteraction from './interaction-task';
 import filterTasks from './filter-tasks';
 import changeTheme from './change-theme';
@@ -20,13 +20,30 @@ const refs = {
   themeButton: document.querySelector('.theme-button'),
 };
 
+// Search task
 refs.searchInput.addEventListener('input', searchTask);
+
+//Open modal
 refs.addTaskButton.addEventListener('click', onButtonClick);
 refs.cancelModalBtn.addEventListener('click', onButtonClick);
+
+//Close modal
 refs.modalBackDrop.addEventListener('click', onBackdropClick);
-refs.modalForm.addEventListener('submit', onFormSubmit);
+
+//Form submit & create task in model window form
+refs.modalForm.addEventListener('input', e => onFormInput(e));
+refs.modalForm.addEventListener('submit', e => onFormSubmit(e, refs));
+
+//Work with tasks (complete, update, delete)
 refs.taskList.addEventListener('click', onTaskInteraction);
+
+//Filter tasks by complete status
 refs.statusSelect.addEventListener('change', filterTasks);
+
+//Change theme of app
 refs.themeButton.addEventListener('click', changeTheme);
+
+// Initialize page
+initPage(refs);
 
 export default refs;

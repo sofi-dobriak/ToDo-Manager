@@ -13,6 +13,8 @@
     align-items: center;
     justify-content: center;
 
+    padding: 12px;
+
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
@@ -28,7 +30,8 @@
 
 .modal-window {
     border-radius: 16px;
-    width: 500px;
+    width: 100%;
+    max-width: 500px;
     height: 289px;
     border: 1px solid #f7f7f7;
     background-color: #f7f7f7;
@@ -40,14 +43,14 @@
     margin-bottom: 24px;
 }
 
-
 .modal-input {
     font-size: 16px;
     border: 1px solid #6c63ff;
     background-color: transparent;
     border-radius: 5px;
     padding: 8px 16px;
-    width: 440px;
+    width: 100%;
+    max-width: 440px;
     height: 38px;
     margin-bottom: 120px;
 }
@@ -114,4 +117,14 @@
 .btn-apply:hover {
     background-color: #f7f7f7;
     color: #6c63ff;
+}
+
+@media screen and (max-width: 368px) {
+    .btn-cancel {
+        font-size: 16px;
+    }
+
+    .btn-apply {
+        font-size: 16px;
+    }
 }

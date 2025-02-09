@@ -7,7 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>To Do Manager</title>
   <script type="module" crossorigin src="/ToDo-Manager/index.js"></script>
-  <link rel="stylesheet" crossorigin href="/ToDo-Manager/assets/index-DPVj4otF.css">
+  <link rel="modulepreload" crossorigin href="/ToDo-Manager/assets/vendor-I1I71QQ2.js">
+  <link rel="stylesheet" crossorigin href="/ToDo-Manager/assets/vendor-DnveWo0P.css">
+  <link rel="stylesheet" crossorigin href="/ToDo-Manager/assets/index-Ct7qhsTq.css">
 </head>
 
 <body>
@@ -22,13 +24,8 @@
         <form class="task-form">
           <div class="task-label-input-container">
     <label class="task-label" for="search-note"></label>
-    <div class="input-button-container">
-        <input class="task-input" type="text" id="search-note" name="search-note" placeholder="Search note...">
-        <button class="search-button">
-            <svg class="search-icon" width="20" height="20">
-                <use href="/ToDo-Manager/assets/icons.svg#icon-search"></use>
-            </svg>
-        </button>
+    <div class="input-container">
+        <input class="task-input" type="text" id="search-note" name="search-note" placeholder="Note #1">
     </div>
 </div>
           <!-- Select -->
@@ -67,23 +64,25 @@
     </section>
 
     <!-- Modal Window -->
-<div class="modal-backdrop js-modal-backdrop">
-    <div class="modal-window js-modal-window">
-        <h2 class="modal-title">New Note</h2>
+<div class="container">
+    <div class="modal-backdrop js-modal-backdrop">
+        <div class="modal-window js-modal-window">
+            <h2 class="modal-title">New Note</h2>
 
-        <form class="modal-form js-modal-form">
-            <input class="modal-input" type="text" id="text-note" name="text-note" placeholder="Input your note..."
-                autofocus>
+            <form class="modal-form js-modal-form">
+                <input class="modal-input" type="text" id="text-note" name="text-note" placeholder="Input your note..."
+                    autofocus>
 
-            <ul class="button-list">
-                <li class="button-item">
-                    <button class="btn-cancel js-btn-cancel" type="button">Cancel</button>
-                </li>
-                <li class="button-item">
-                    <button class="btn-apply js-btn-apply" type="submit">Apply</button>
-                </li>
-            </ul>
-        </form>
+                <ul class="button-list">
+                    <li class="button-item">
+                        <button class="btn-cancel js-btn-cancel" type="button">Cancel</button>
+                    </li>
+                    <li class="button-item">
+                        <button class="btn-apply js-btn-apply" type="submit">Apply</button>
+                    </li>
+                </ul>
+            </form>
+        </div>
     </div>
 </div>
   </main>

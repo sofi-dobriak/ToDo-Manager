@@ -8,3 +8,7 @@ body {
     color: #252525;
     transition: background-color 0.3s, color 0.3s;
 }
+
+.section {
+    padding-bottom: 30px;
+}

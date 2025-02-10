@@ -1,5 +1,6 @@
-.container {
+.section {
     position: relative;
+    height: 100%;
 }
 
 .add-button {
@@ -11,8 +12,8 @@
     padding: 15px;
     border-radius: 50%;
     background-color: #6c63ff;
-    bottom: -150px;
-    right: 8px;
+    bottom: 20px;
+    right: 46px;
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s, border-color 0.3s,
         color 0.3s;

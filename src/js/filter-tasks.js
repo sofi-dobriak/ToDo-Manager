@@ -11,12 +11,15 @@ function filterTasks(e) {
     if (selectedStatus === 'All') {
       task.style.display = 'flex';
       refs.clearListButton.style.display = 'block';
+      refs.addTaskButton.style.display = 'block';
     } else if (selectedStatus === 'Complete' && isCompleted) {
       task.style.display = 'flex';
       refs.clearListButton.style.display = 'none';
+      refs.addTaskButton.style.display = 'none';
     } else if (selectedStatus === 'Incomplete' && !isCompleted) {
       task.style.display = 'flex';
       refs.clearListButton.style.display = 'none';
+      refs.addTaskButton.style.display = 'none';
     } else {
       task.style.display = 'none';
     }

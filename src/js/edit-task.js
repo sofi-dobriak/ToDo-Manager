@@ -6,7 +6,7 @@ function editTask(e) {
   if (target.closest('.icon-pencil') || target.closest('.note-title')) {
     const taskItem = target.closest('.task-item');
     const taskText = taskItem.querySelector('.note-title');
-    const originalText = taskText.textContent.trim();
+    const originalText = (taskText.textContent || '').trim();
     const taskId = Number(taskItem.dataset.id);
 
     // Додаємо редагування без інпуту

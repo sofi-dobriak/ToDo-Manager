@@ -1,9 +1,9 @@
 import { TASK_LIST_KEY } from './constants';
 import { loadFromLS, saveToLS } from './set-get-localStorage';
 
-function updateTaskText(e, input, taskText, originalText, taskId) {
+function updateTaskText(e, taskText, originalText, taskId) {
   if (e.key === 'Enter' || e.type === 'blur') {
-    const newText = input.value.trim();
+    const newText = taskText.textContent.trim();
 
     taskText.textContent = newText || originalText;
 
@@ -15,7 +15,6 @@ function updateTaskText(e, input, taskText, originalText, taskId) {
       );
 
       saveToLS(TASK_LIST_KEY, tasks);
-      input.remove();
     }
   }
 }

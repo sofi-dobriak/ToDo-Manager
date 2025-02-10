@@ -1,3 +1,5 @@
+import refs from './refs';
+
 function filterTasks(e) {
   const selectedStatus = e.target.value;
   const tasks = document.querySelectorAll('.task-item');
@@ -8,10 +10,13 @@ function filterTasks(e) {
 
     if (selectedStatus === 'All') {
       task.style.display = 'flex';
+      refs.clearListButton.style.display = 'block';
     } else if (selectedStatus === 'Complete' && isCompleted) {
       task.style.display = 'flex';
+      refs.clearListButton.style.display = 'none';
     } else if (selectedStatus === 'Incomplete' && !isCompleted) {
       task.style.display = 'flex';
+      refs.clearListButton.style.display = 'none';
     } else {
       task.style.display = 'none';
     }

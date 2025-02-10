@@ -14,9 +14,6 @@ function editTask(e) {
     taskText.classList.add('editing');
     taskText.focus();
 
-    // Виділення всього тексту при фокусі
-    document.execCommand('selectAll', false, null);
-
     const updateTask = e => {
       taskText.removeAttribute('contenteditable');
       taskText.classList.remove('editing');

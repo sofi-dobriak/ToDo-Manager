@@ -8,8 +8,8 @@ export function loadFromLS(key) {
 
   try {
     const parseData = JSON.parse(data);
-    return parseData;
+    return Array.isArray(parseData) ? parseData : [];
   } catch {
-    return data;
+    return [];
   }
 }

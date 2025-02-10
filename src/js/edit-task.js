@@ -7,20 +7,30 @@ function editTask(e) {
     const taskItem = target.closest('.task-item');
     const taskText = taskItem.querySelector('.note-title');
     const originalText = taskText.textContent.trim();
+    const taskId = Number(taskItem.dataset.id);
 
-    const input = document.createElement('input');
-    input.type = 'text';
-    input.value = originalText;
-    input.classList.add('input-edit');
-    taskText.innerHTML = '';
-    taskText.appendChild(input);
+    // Додаємо редагування без інпуту
+    taskText.setAttribute('contenteditable', 'true');
+    taskText.classList.add('editing');
+    taskText.focus();
 
-    input.focus();
+    // Виділення всього тексту при фокусі
+    document.execCommand('selectAll', false, null);
 
-    const updateTask = e => updateTaskText(e, input, taskText, originalText);
+    const updateTask = e => {
+      taskText.removeAttribute('contenteditable');
+      taskText.classList.remove('editing');
+      updateTaskText(e, taskText, originalText, taskId);
+    };
 
-    input.addEventListener('keydown', updateTask);
-    input.addEventListener('blur', updateTask);
+    taskText.addEventListener('keydown', e => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        updateTask(e);
+      }
+    });
+
+    taskText.addEventListener('blur', updateTask);
   }
 }
 

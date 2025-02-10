@@ -14,7 +14,7 @@ export function onFormInput(e) {
 }
 
 export function initPage(refs) {
-  const tasks = loadFromLS(TASK_LIST_KEY) || [];
+  let tasks = loadFromLS(TASK_LIST_KEY);
 
   if (tasks.length === 0) {
     refs.emptyBlock.style.display = 'block';

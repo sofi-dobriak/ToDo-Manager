@@ -2,20 +2,26 @@
     max-width: 720px;
 }
 
-.check-input-text-container {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    margin-bottom: 12px;
-}
-
 .task-item {
     display: flex;
+    align-items: center;
     gap: 12px;
     border-bottom: 1px solid #a6a1fe;
     margin-bottom: 18px;
     position: relative;
+    padding-right: 40px;
+    padding-bottom: 16px;
 }
+
+.check-input-text-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-grow: 1;
+    min-width: 0;
+}
+
 
 .checkbox {
     width: 24px;
@@ -52,16 +58,43 @@
 .note-date-container {
     display: flex;
     flex-direction: column;
-    gap: 2px;
+    flex-grow: 1;
+    min-width: 0;
 }
 
 .note-title {
-    max-width: 600px;
     font-size: 16px;
     line-height: 1.5;
     color: #252525;
-    white-space: normal;
+    width: 100%;
+    display: block;
     word-wrap: break-word;
+    white-space: normal;
+}
+
+.note-title {
+    display: block;
+    width: 95%;
+    white-space: pre-wrap;
+    /* Перенесення довгих рядків */
+    word-break: break-word;
+    padding: 5px 8px;
+    font-size: 16px;
+    color: #252525;
+    background: transparent;
+    border: none;
+    outline: none;
+    cursor: text;
+    min-height: 20px;
+    /* Запобігає стисненню */
+}
+
+/* При редагуванні */
+.note-title.editing {
+    border: 1px solid #6c63ff;
+    background: #fff;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+    padding: 5px;
 }
 
 .completed {
@@ -70,26 +103,17 @@
     color: rgba(37, 37, 37, 0.5);
 }
 
-.input-edit {
-    font-size: 16px;
-    border: none;
-    background-color: transparent;
-    border-radius: 5px;
-    padding: 8px 16px;
-    width: 100%;
-    max-width: 600px;
-    height: 38px;
-}
-
 .input-edit:focus {
-    outline: none;
+    outline: block;
 }
 
 .icon-list {
-    display: none;
     position: absolute;
     right: 10px;
-    top: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    gap: 12px;
     list-style: none;
     padding: 0;
     margin: 0;
@@ -157,9 +181,13 @@
     background-color: #ff7070;
 }
 
+/* Адаптивність: менші відступи і гнучке розташування */
 @media screen and (max-width: 768px) {
+    .check-input-text-container {
+        gap: 8px;
+    }
+
     .icon-list {
-        display: flex;
         gap: 8px;
     }
 }

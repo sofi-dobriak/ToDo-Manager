@@ -3,6 +3,7 @@ import refs from './refs';
 function filterTasks(e) {
   const selectedStatus = e.target.value;
   const tasks = document.querySelectorAll('.task-item');
+  let hasVisibleTasks = false;
 
   tasks.forEach(task => {
     const taskText = task.querySelector('.note-title');
@@ -10,20 +11,29 @@ function filterTasks(e) {
 
     if (selectedStatus === 'All') {
       task.style.display = 'flex';
-      refs.clearListButton.style.display = 'block';
-      refs.addTaskButton.style.display = 'flex';
+      hasVisibleTasks = true;
     } else if (selectedStatus === 'Complete' && isCompleted) {
       task.style.display = 'flex';
-      refs.clearListButton.style.display = 'none';
-      refs.addTaskButton.style.display = 'none';
+      hasVisibleTasks = true;
     } else if (selectedStatus === 'Incomplete' && !isCompleted) {
       task.style.display = 'flex';
-      refs.clearListButton.style.display = 'none';
-      refs.addTaskButton.style.display = 'none';
+      hasVisibleTasks = true;
     } else {
       task.style.display = 'none';
     }
   });
+
+  if (!hasVisibleTasks) {
+    refs.emptyBlock.style.display = 'block';
+    refs.addTaskButton.style.display = 'none';
+  } else {
+    refs.emptyBlock.style.display = 'none';
+    refs.addTaskButton.style.display =
+      selectedStatus === 'All' ? 'flex' : 'none';
+  }
+
+  refs.clearListButton.style.display =
+    selectedStatus === 'All' ? 'block' : 'none';
 }
 
 export default filterTasks;

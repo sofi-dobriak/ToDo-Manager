@@ -9,7 +9,6 @@ function editTask(e) {
     const originalText = (taskText.textContent || '').trim();
     const taskId = Number(taskItem.dataset.id);
 
-    // Додаємо редагування без інпуту
     taskText.setAttribute('contenteditable', 'true');
     taskText.classList.add('editing');
     taskText.focus();

@@ -61,3 +61,7 @@
 .dark .theme-button .theme-icon-sun {
     display: block;
 }
+
+.dark .editing {
+    background-color: transparent;
+}

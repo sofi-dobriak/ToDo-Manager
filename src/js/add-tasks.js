@@ -18,9 +18,11 @@ export function initPage(refs) {
 
   if (tasks.length === 0) {
     refs.emptyBlock.style.display = 'block';
+    refs.clearListButton.style.display = 'none';
     return;
   } else {
     refs.emptyBlock.style.display = 'none';
+    refs.clearListButton.style.display = 'block';
   }
 
   const markup = tasks.map(taskTamplate).join('');
@@ -41,6 +43,7 @@ export function onFormSubmit(e, refs) {
     return;
   } else {
     refs.emptyBlock.style.display = 'none';
+    refs.clearListButton.style.display = 'block';
   }
 
   const tasks = loadFromLS(TASK_LIST_KEY) || [];

@@ -76,7 +76,8 @@
     background-color: transparent;
     border-radius: 5px;
     padding: 8px 16px;
-    width: 600px;
+    width: 100%;
+    max-width: 600px;
     height: 38px;
 }
 
@@ -132,6 +133,29 @@
     stroke: #e50000;
 }
 
+.clear-list-button {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: 0.04em;
+    color: #fff;
+
+    border-radius: 8px;
+    width: 100%;
+    max-width: 120px;
+    height: 40px;
+
+    border: none;
+    background-color: #ff4e4e;
+    cursor: pointer;
+
+    transition: background-color .3s ease;
+}
+
+.clear-list-button:hover,
+.clear-list-button:focus {
+    background-color: #ff7070;
+}
 
 @media screen and (max-width: 768px) {
     .icon-list {

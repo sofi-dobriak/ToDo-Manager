@@ -1,5 +1,5 @@
 import refs from './refs';
-import { TASK_ITEM_KEY, TASK_LIST_KEY } from './constants';
+import { TASK_LIST_KEY } from './constants';
 import { loadFromLS, saveToLS } from './set-get-localStorage';
 
 function deleteTask(e) {
@@ -17,6 +17,7 @@ function deleteTask(e) {
 
       if (tasks.length === 0) {
         refs.emptyBlock.style.display = 'block';
+        refs.clearListButton.style.display = 'none';
       }
     }
   }

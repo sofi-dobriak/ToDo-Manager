@@ -5,6 +5,7 @@ import { onFormInput, onFormSubmit, initPage } from './add-tasks';
 import onTaskInteraction from './interaction-task';
 import filterTasks from './filter-tasks';
 import changeTheme from './change-theme';
+import clearAllList from './clear-all-list';
 
 const refs = {
   searchInput: document.querySelector('#search-note'),
@@ -16,6 +17,7 @@ const refs = {
   modalInput: document.querySelector('.modal-input'),
   taskList: document.querySelector('.js-task-list'),
   emptyBlock: document.querySelector('.js-empty-block'),
+  clearListButton: document.querySelector('.js-clear-list-button'),
   statusSelect: document.getElementById('status'),
   themeButton: document.querySelector('.theme-button'),
 };
@@ -42,6 +44,9 @@ refs.statusSelect.addEventListener('change', filterTasks);
 
 //Change theme of app
 refs.themeButton.addEventListener('click', changeTheme);
+
+//Clear all list
+refs.clearListButton.addEventListener('click', clearAllList);
 
 // Initialize page
 initPage(refs);

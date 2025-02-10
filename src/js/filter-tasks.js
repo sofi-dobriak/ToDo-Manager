@@ -11,7 +11,7 @@ function filterTasks(e) {
     if (selectedStatus === 'All') {
       task.style.display = 'flex';
       refs.clearListButton.style.display = 'block';
-      refs.addTaskButton.style.display = 'block';
+      refs.addTaskButton.style.display = 'flex';
     } else if (selectedStatus === 'Complete' && isCompleted) {
       task.style.display = 'flex';
       refs.clearListButton.style.display = 'none';

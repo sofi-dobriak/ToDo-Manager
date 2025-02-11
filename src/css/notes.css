@@ -90,8 +90,8 @@
 .icon-list {
     position: absolute;
     right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
+    top: 30%;
+    transform: translateY(-30%);
     display: flex;
     gap: 12px;
     list-style: none;

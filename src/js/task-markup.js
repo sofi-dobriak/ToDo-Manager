@@ -1,14 +1,14 @@
-function taskTamplate(taskObject) {
-  return `<li class="task-item" data-id="${taskObject.id}">
+export function taskTemplate({ id, taskText, completed }) {
+  return `<li class="task-item" data-id="${id}">
             <div class="check-input-text-container">
                 <div class="checkbox-container">
                     <input 
                         class="checkbox-input" 
                         type="checkbox" 
-                        id="note-check-${taskObject.id}"
-                        ${taskObject.completed ? 'checked' : ''}
+                        id="note-check-${id}"
+                        ${completed ? 'checked' : ''}
                     >
-                    <label class="checkbox" for="note-check-${taskObject.id}">
+                    <label class="checkbox" for="note-check-${id}">
                         <svg class="checkbox-label-icon" width="18" height="18">
                             <use href="assets/icons.svg#icon-check"></use>
                         </svg>
@@ -16,8 +16,8 @@ function taskTamplate(taskObject) {
                 </div>
                 <div class="note-date-container">
                     <p class="note-title ${
-                      taskObject.completed ? 'completed' : ''
-                    }">${taskObject.taskText}</p>
+                      completed ? 'completed' : ''
+                    }">${taskText}</p>
                 </div>
             </div>
         
@@ -40,4 +40,6 @@ function taskTamplate(taskObject) {
         </li>`;
 }
 
-export default taskTamplate;
+export function tasksTemplate(tasks) {
+  return tasks.map(taskTemplate).join('');
+}

@@ -1,33 +1,41 @@
 import updateTaskText from './update-text-task';
 
 function editTask(e) {
-  const target = e.target;
+  const target = e.target.closest('.icon-pencil, .note-title');
+  if (!target) return;
 
-  if (target.closest('.icon-pencil') || target.closest('.note-title')) {
-    const taskItem = target.closest('.task-item');
-    const taskText = taskItem.querySelector('.note-title');
-    const originalText = (taskText.textContent || '').trim();
-    const taskId = Number(taskItem.dataset.id);
+  const taskItem = target.closest('.task-item');
+  const taskText = taskItem.querySelector('.note-title');
+  const originalText = taskText.textContent.trim();
+  const taskId = Number(taskItem.dataset.id);
 
-    taskText.setAttribute('contenteditable', 'true');
-    taskText.classList.add('editing');
-    taskText.focus();
+  taskText.setAttribute('contenteditable', 'true');
+  taskText.classList.add('editing');
+  taskText.focus();
 
-    const updateTask = e => {
-      taskText.removeAttribute('contenteditable');
-      taskText.classList.remove('editing');
+  function updateTask(e) {
+    taskText.removeAttribute('contenteditable');
+    taskText.classList.remove('editing');
+
+    if (e.type === 'keydown' && e.key === 'Escape') {
+      taskText.textContent = originalText;
+    } else {
       updateTaskText(e, taskText, originalText, taskId);
-    };
+    }
 
-    taskText.addEventListener('keydown', e => {
-      if (e.key === 'Enter') {
-        e.preventDefault();
-        updateTask(e);
-      }
-    });
-
-    taskText.addEventListener('blur', updateTask);
+    taskText.removeEventListener('keydown', onKeyDown);
+    taskText.removeEventListener('blur', updateTask);
   }
+
+  function onKeyDown(e) {
+    if (e.key === 'Enter' || e.key === 'Escape') {
+      e.preventDefault();
+      updateTask(e);
+    }
+  }
+
+  taskText.addEventListener('keydown', onKeyDown);
+  taskText.addEventListener('blur', updateTask);
 }
 
 export default editTask;

@@ -1,7 +1,7 @@
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 
-import taskTamplate from './task-markup';
+import { taskTemplate, tasksTemplate } from './task-markup';
 import { saveToLS, loadFromLS } from './set-get-localStorage';
 import { TASK_ITEM_KEY, TASK_LIST_KEY } from './constants';
 
@@ -16,7 +16,7 @@ export function onFormInput(e) {
 export function initPage(refs) {
   let tasks = loadFromLS(TASK_LIST_KEY);
 
-  if (tasks.length === 0) {
+  if (!tasks.length) {
     refs.emptyBlock.style.display = 'block';
     refs.clearListButton.style.display = 'none';
     return;
@@ -25,8 +25,7 @@ export function initPage(refs) {
     refs.clearListButton.style.display = 'block';
   }
 
-  const markup = tasks.map(taskTamplate).join('');
-  refs.taskList.innerHTML = markup;
+  refs.taskList.innerHTML = tasksTemplate(tasks);
 }
 
 export function onFormSubmit(e, refs) {
@@ -57,7 +56,7 @@ export function onFormSubmit(e, refs) {
   tasks.push(newTask);
   saveToLS(TASK_LIST_KEY, tasks);
 
-  const markup = taskTamplate(newTask);
+  const markup = taskTemplate(newTask);
   refs.taskList.insertAdjacentHTML('beforeend', markup);
 
   refs.modalForm.reset();

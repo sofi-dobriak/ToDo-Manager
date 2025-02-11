@@ -3,23 +3,22 @@ import { TASK_LIST_KEY } from './constants';
 import { loadFromLS, saveToLS } from './set-get-localStorage';
 
 function deleteTask(e) {
-  if (e.target.closest('.icon-trash')) {
-    const taskItem = e.target.closest('.task-item');
+  const deleteButton = e.target.closest('.icon-trash');
+  if (!deleteButton) return;
 
-    if (taskItem) {
-      const taskId = Number(taskItem.dataset.id);
-      taskItem.remove();
+  const taskItem = deleteButton.closest('.task-item');
+  if (!taskItem) return;
 
-      let tasks = loadFromLS(TASK_LIST_KEY);
-      tasks = tasks.filter(task => task.id !== taskId);
+  const taskId = Number(taskItem.dataset.id);
+  taskItem.remove();
 
-      saveToLS(TASK_LIST_KEY, tasks);
+  let tasks = loadFromLS(TASK_LIST_KEY) || [];
+  tasks = tasks.filter(task => task.id !== taskId);
+  saveToLS(TASK_LIST_KEY, tasks);
 
-      if (tasks.length === 0) {
-        refs.emptyBlock.style.display = 'block';
-        refs.clearListButton.style.display = 'none';
-      }
-    }
+  if (tasks.length === 0) {
+    refs.emptyBlock.style.display = 'block';
+    refs.clearListButton.style.display = 'none';
   }
 }
 

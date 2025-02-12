@@ -1,12 +1,16 @@
 .empty-img {
     display: block;
     margin: 0 auto 20px;
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    aspect-ratio: 16/9;
 }
 
 .empty-text {
     text-align: center;
     font-weight: 600;
-    font-size: 20px;
+    font-size: 18px;
     line-height: 1;
     text-transform: capitalize;
     color: #252525;

@@ -7,6 +7,8 @@ import filterTasks from './filter-tasks';
 import changeTheme from './change-theme';
 import clearAllList from './clear-all-list';
 
+import './lottie-animation';
+
 const refs = {
   searchInput: document.querySelector('#search-note'),
   modalBackDrop: document.querySelector('.js-modal-backdrop'),
@@ -20,6 +22,8 @@ const refs = {
   clearListButton: document.querySelector('.js-clear-list-button'),
   statusSelect: document.getElementById('status'),
   themeButton: document.querySelector('.theme-button'),
+
+  canvas: document.querySelector('#dotlottie-canvas'),
 };
 
 // Search task

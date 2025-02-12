@@ -1,4 +1,5 @@
 import refs from './refs';
+import { initLottie } from './lottie-animation';
 
 function searchTask(e) {
   e.preventDefault();
@@ -26,7 +27,11 @@ function searchTask(e) {
     } else if (!hasVisibleTask) {
       refs.clearListButton.style.display = 'none';
       refs.addTaskButton.style.display = 'none';
-      refs.emptyBlock.style.display = 'block';
+
+      setTimeout(() => {
+        refs.emptyBlock.style.display = 'block';
+        initLottie();
+      }, 10);
     } else {
       refs.emptyBlock.style.display = 'none';
       refs.clearListButton.style.display = 'none';

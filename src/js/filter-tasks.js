@@ -28,7 +28,7 @@ function filterTasks(e) {
     refs.emptyBlock.style.display = 'block';
     refs.addTaskButton.style.display = 'none';
 
-    setTimeout(() => initLottie(), 100);
+    setTimeout(() => initLottie(), 10);
   } else {
     refs.emptyBlock.style.display = 'none';
     refs.addTaskButton.style.display =

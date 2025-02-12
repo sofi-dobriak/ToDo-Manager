@@ -1,5 +1,5 @@
 import refs from './refs';
-import { initLottie } from './lottie-animation';
+import { initLottie, destroyLottie } from './lottie-animation';
 
 function searchTask(e) {
   e.preventDefault();
@@ -28,14 +28,13 @@ function searchTask(e) {
       refs.clearListButton.style.display = 'none';
       refs.addTaskButton.style.display = 'none';
 
-      setTimeout(() => {
-        refs.emptyBlock.style.display = 'block';
-        initLottie();
-      }, 10);
+      refs.emptyBlock.style.display = 'block';
+      initLottie();
     } else {
       refs.emptyBlock.style.display = 'none';
       refs.clearListButton.style.display = 'none';
       refs.addTaskButton.style.display = 'none';
+      destroyLottie();
     }
   });
 }

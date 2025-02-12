@@ -1,6 +1,6 @@
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
-
+import { initLottie, destroyLottie } from './lottie-animation';
 import { taskTemplate, tasksTemplate } from './task-markup';
 import { saveToLS, loadFromLS } from './set-get-localStorage';
 import { TASK_ITEM_KEY, TASK_LIST_KEY } from './constants';
@@ -19,10 +19,12 @@ export function initPage(refs) {
   if (!tasks.length) {
     refs.emptyBlock.style.display = 'block';
     refs.clearListButton.style.display = 'none';
+    initLottie();
     return;
   } else {
     refs.emptyBlock.style.display = 'none';
     refs.clearListButton.style.display = 'block';
+    destroyLottie();
   }
 
   refs.taskList.innerHTML = tasksTemplate(tasks);

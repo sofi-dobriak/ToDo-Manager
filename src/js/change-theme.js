@@ -1,11 +1,9 @@
-import { saveToLS, loadFromLS } from './set-get-localStorage';
-
 function changeTheme() {
   const isDark = document.body.classList.toggle('dark');
-  saveToLS('theme', isDark ? 'dark' : '');
+  localStorage.setItem('theme', isDark ? 'dark' : '');
 }
 
-const savedTheme = loadFromLS('theme');
+const savedTheme = localStorage.getItem('theme');
 if (savedTheme === 'dark') {
   document.body.classList.add('dark');
 }

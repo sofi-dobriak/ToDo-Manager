@@ -1,5 +1,5 @@
 import refs from './refs';
-import { initLottie } from './lottie-animation';
+import { initLottie, destroyLottie } from './lottie-animation';
 
 function filterTasks(e) {
   const selectedStatus = e.target.value;
@@ -28,11 +28,12 @@ function filterTasks(e) {
     refs.emptyBlock.style.display = 'block';
     refs.addTaskButton.style.display = 'none';
 
-    setTimeout(() => initLottie(), 10);
+    initLottie();
   } else {
     refs.emptyBlock.style.display = 'none';
     refs.addTaskButton.style.display =
       selectedStatus === 'All' ? 'flex' : 'none';
+    destroyLottie();
   }
 
   refs.clearListButton.style.display =

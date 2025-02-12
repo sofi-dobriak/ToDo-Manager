@@ -8,7 +8,7 @@ function searchTask(e) {
   const tasks = document.querySelectorAll('.task-item');
   let hasVisibleTask = false;
 
-  tasks.forEach(task => {
+  for (const task of tasks) {
     const taskText = task
       .querySelector('.note-title')
       .textContent.toLowerCase();
@@ -19,24 +19,24 @@ function searchTask(e) {
     } else {
       task.style.display = 'none';
     }
+  }
 
-    if (searchQuery === '') {
-      refs.clearListButton.style.display = 'block';
-      refs.addTaskButton.style.display = 'flex';
-      refs.emptyBlock.style.display = 'none';
-    } else if (!hasVisibleTask) {
-      refs.clearListButton.style.display = 'none';
-      refs.addTaskButton.style.display = 'none';
-
-      refs.emptyBlock.style.display = 'block';
-      initLottie();
-    } else {
-      refs.emptyBlock.style.display = 'none';
-      refs.clearListButton.style.display = 'none';
-      refs.addTaskButton.style.display = 'none';
-      destroyLottie();
-    }
-  });
+  if (searchQuery === '') {
+    refs.clearListButton.style.display = 'block';
+    refs.addTaskButton.style.display = 'flex';
+    refs.emptyBlock.style.display = 'none';
+    destroyLottie();
+  } else if (!hasVisibleTask) {
+    refs.clearListButton.style.display = 'none';
+    refs.addTaskButton.style.display = 'none';
+    refs.emptyBlock.style.display = 'block';
+    initLottie();
+  } else {
+    refs.emptyBlock.style.display = 'none';
+    refs.clearListButton.style.display = 'none';
+    refs.addTaskButton.style.display = 'none';
+    destroyLottie();
+  }
 }
 
 export default searchTask;

@@ -27,7 +27,7 @@ function resizeCanvas() {
   }
 }
 
-function initLottie() {
+export function initLottie() {
   dotLottie = new DotLottie({
     autoplay: true,
     loop: true,

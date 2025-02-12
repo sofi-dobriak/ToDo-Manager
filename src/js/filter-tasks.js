@@ -1,4 +1,5 @@
 import refs from './refs';
+import { initLottie } from './lottie-animation';
 
 function filterTasks(e) {
   const selectedStatus = e.target.value;
@@ -26,6 +27,8 @@ function filterTasks(e) {
   if (!hasVisibleTasks) {
     refs.emptyBlock.style.display = 'block';
     refs.addTaskButton.style.display = 'none';
+
+    setTimeout(() => initLottie(), 100);
   } else {
     refs.emptyBlock.style.display = 'none';
     refs.addTaskButton.style.display =

@@ -1,5 +1,13 @@
-import refs from './refs';
-import { initLottie, destroyLottie } from './lottie-animation';
+import {
+  showAddTaskButton,
+  hideAddTaskButton,
+  showSingleTask,
+  hideSingleTask,
+  showEmptyImage,
+  hideEmptyImage,
+  showClearListButton,
+  hideClearListButton,
+} from './helpers';
 
 function filterTasks(e) {
   const selectedStatus = e.target.value;
@@ -11,33 +19,28 @@ function filterTasks(e) {
     const isCompleted = taskText.classList.contains('completed');
 
     if (selectedStatus === 'All') {
-      task.style.display = 'flex';
+      showSingleTask(task);
       hasVisibleTasks = true;
     } else if (selectedStatus === 'Complete' && isCompleted) {
-      task.style.display = 'flex';
+      showSingleTask(task);
       hasVisibleTasks = true;
     } else if (selectedStatus === 'Incomplete' && !isCompleted) {
-      task.style.display = 'flex';
+      showSingleTask(task);
       hasVisibleTasks = true;
     } else {
-      task.style.display = 'none';
+      hideSingleTask(task);
     }
   });
 
   if (!hasVisibleTasks) {
-    refs.emptyBlock.style.display = 'block';
-    refs.addTaskButton.style.display = 'none';
-
-    initLottie();
+    showEmptyImage();
+    hideAddTaskButton();
   } else {
-    refs.emptyBlock.style.display = 'none';
-    refs.addTaskButton.style.display =
-      selectedStatus === 'All' ? 'flex' : 'none';
-    destroyLottie();
+    hideEmptyImage();
+    selectedStatus === 'All' ? showAddTaskButton() : hideAddTaskButton();
   }
 
-  refs.clearListButton.style.display =
-    selectedStatus === 'All' ? 'block' : 'none';
+  selectedStatus === 'All' ? showClearListButton() : hideClearListButton();
 }
 
 export default filterTasks;

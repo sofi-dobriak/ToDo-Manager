@@ -1,5 +1,13 @@
-import refs from './refs';
-import { initLottie, destroyLottie } from './lottie-animation';
+import {
+  hideAddTaskButton,
+  hideClearListButton,
+  hideEmptyImage,
+  hideSingleTask,
+  showAddTaskButton,
+  showClearListButton,
+  showEmptyImage,
+  showSingleTask,
+} from './helpers';
 
 function searchTask(e) {
   e.preventDefault();
@@ -14,28 +22,25 @@ function searchTask(e) {
       .textContent.toLowerCase();
 
     if (taskText.includes(searchQuery)) {
-      task.style.display = 'block';
+      showSingleTask(task);
       hasVisibleTask = true;
     } else {
-      task.style.display = 'none';
+      hideSingleTask(task);
     }
   }
 
   if (searchQuery === '') {
-    refs.clearListButton.style.display = 'block';
-    refs.addTaskButton.style.display = 'flex';
-    refs.emptyBlock.style.display = 'none';
-    destroyLottie();
+    showClearListButton();
+    showAddTaskButton();
+    hideEmptyImage();
   } else if (!hasVisibleTask) {
-    refs.clearListButton.style.display = 'none';
-    refs.addTaskButton.style.display = 'none';
-    refs.emptyBlock.style.display = 'block';
-    initLottie();
+    hideClearListButton();
+    hideAddTaskButton();
+    showEmptyImage();
   } else {
-    refs.emptyBlock.style.display = 'none';
-    refs.clearListButton.style.display = 'none';
-    refs.addTaskButton.style.display = 'none';
-    destroyLottie();
+    hideEmptyImage();
+    hideClearListButton();
+    hideAddTaskButton();
   }
 }
 

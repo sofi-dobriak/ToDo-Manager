@@ -23,11 +23,13 @@
     color: #f7f7f7
 }
 
+.dark .accept-modal-window,
 .dark .modal-window {
     border-color: #f7f7f7;
     background-color: #252525;
 }
 
+.dark .accept-modal-title,
 .dark .modal-title {
     color: #f7f7f7
 }

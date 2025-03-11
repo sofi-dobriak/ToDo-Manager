@@ -1,3 +1,4 @@
+.accept-modal-backdrop,
 .modal-backdrop {
     background-color: rgba(37, 37, 37, 0.7);
 
@@ -21,26 +22,38 @@
     transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
-
+.accept-modal-backdrop.is-open,
 .modal-backdrop.is-open {
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
 }
 
+.accept-modal-window,
 .modal-window {
     border-radius: 16px;
     width: 100%;
     max-width: 500px;
-    height: 289px;
+    height: 290px;
     border: 1px solid #f7f7f7;
     background-color: #f7f7f7;
     padding: 18px 30px;
 }
 
+.accept-modal-window {
+    width: 100%;
+    max-width: 258px;
+    height: 148px;
+}
+
+.accept-modal-title,
 .modal-title {
     text-align: center;
     margin-bottom: 24px;
+}
+
+.accept-modal-title {
+    font-size: 22px;
 }
 
 .modal-input {
@@ -78,7 +91,7 @@
     line-height: 1;
     text-transform: uppercase;
 
-    max-width: 110px;
+    min-width: 88px;
     height: 38px;
 
     border: 1px solid #6c63ff;
@@ -101,7 +114,7 @@
     line-height: 1;
     text-transform: uppercase;
 
-    max-width: 110px;
+    min-width: 88px;
     height: 38px;
 
     border: 1px solid #6c63ff;

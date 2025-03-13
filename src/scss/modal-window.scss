@@ -1,0 +1,149 @@
+@use 'base';
+
+.accept-modal-backdrop,
+.modal-backdrop {
+  background-color: rgba(37, 37, 37, 0.7);
+
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 12px;
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  @include transition(all, 0.3s, ease);
+
+  &.is-open,
+  &.is-open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+}
+
+.accept-modal-window,
+.modal-window {
+  border-radius: 16px;
+  width: 100%;
+  max-width: 500px;
+  height: 290px;
+  border: 1px solid #f7f7f7;
+  background-color: #f7f7f7;
+  padding: 18px 30px;
+}
+
+.accept-modal-window {
+  width: 100%;
+  max-width: 258px;
+  height: 148px;
+}
+
+.accept-modal-title,
+.modal-title {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.accept-modal-title {
+  font-size: 22px;
+}
+
+.modal-input {
+  font-size: 16px;
+  border: 1px solid #6c63ff;
+  background-color: transparent;
+  border-radius: 5px;
+  padding: 8px 16px;
+  width: 100%;
+  max-width: 440px;
+  height: 38px;
+  margin-bottom: 120px;
+
+  &::placeholder {
+    font-size: 16px;
+    line-height: 1;
+    color: #c3c1e5;
+  }
+
+  &:hover,
+  &:focus {
+    outline: none;
+  }
+}
+
+.button-list {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.btn-cancel {
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 1;
+  text-transform: uppercase;
+
+  min-width: 88px;
+  height: 38px;
+
+  border: 1px solid #6c63ff;
+  border-radius: 5px;
+  color: #6c63ff;
+
+  background-color: transparent;
+  cursor: pointer;
+
+  @include transition(all, 0.3s, ease);
+
+  &:hover,
+  &:focus {
+    background-color: #6c63ff;
+    color: #f7f7f7;
+  }
+}
+
+.btn-apply {
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 1;
+  text-transform: uppercase;
+
+  min-width: 88px;
+  height: 38px;
+
+  border: 1px solid #6c63ff;
+  border-radius: 5px;
+  color: #f7f7f7;
+
+  background-color: #6c63ff;
+  cursor: pointer;
+
+  @include transition(all, 0.3s, ease);
+
+  &:hover,
+  &:focus {
+    background-color: #f7f7f7;
+    color: #6c63ff;
+  }
+}
+
+@media screen and (max-width: $mobile-breakpoint) {
+  .btn-cancel {
+    font-size: 16px;
+  }
+
+  .btn-apply {
+    font-size: 16px;
+  }
+}

@@ -1,3 +1,6 @@
+import { loadFromLS } from './set-get-localStorage';
+import { TASK_LIST_KEY } from './constants';
+
 import {
   hideAddTaskButton,
   hideClearListButton,
@@ -12,11 +15,30 @@ import {
 function searchTask(e) {
   e.preventDefault();
 
+  const taskArray = loadFromLS(TASK_LIST_KEY);
   const searchQuery = e.target.value.toLowerCase();
   const tasks = document.querySelectorAll('.task-item');
   let hasVisibleTask = false;
 
-  for (const task of tasks) {
+  if (searchQuery === '') {
+    showAddTaskButton();
+
+    if (taskArray.length === 0) {
+      showEmptyImage();
+      hideClearListButton();
+    } else {
+      hideEmptyImage();
+      showClearListButton();
+
+      tasks.forEach(task => showSingleTask(task));
+    }
+    return;
+  }
+
+  hideAddTaskButton();
+  hideClearListButton();
+
+  tasks.forEach(task => {
     const taskText = task
       .querySelector('.note-title')
       .textContent.toLowerCase();
@@ -27,20 +49,12 @@ function searchTask(e) {
     } else {
       hideSingleTask(task);
     }
-  }
+  });
 
-  if (searchQuery === '') {
-    showClearListButton();
-    showAddTaskButton();
+  if (hasVisibleTask) {
     hideEmptyImage();
-  } else if (!hasVisibleTask) {
-    hideClearListButton();
-    hideAddTaskButton();
-    showEmptyImage();
   } else {
-    hideEmptyImage();
-    hideClearListButton();
-    hideAddTaskButton();
+    showEmptyImage();
   }
 }
 

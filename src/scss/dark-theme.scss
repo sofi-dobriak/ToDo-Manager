@@ -1,0 +1,70 @@
+.dark {
+  background-color: #252525;
+  color: #f7f7f7;
+
+  .header-title {
+    color: #f7f7f7;
+  }
+
+  .input-button-container {
+    border-color: #f7f7f7;
+  }
+
+  .task-input {
+    color: #f7f7f7;
+  }
+
+  .search-icon {
+    fill: #f7f7f7;
+  }
+
+  .empty-text {
+    color: #f7f7f7;
+  }
+
+  .accept-modal-window,
+  .modal-window {
+    border-color: #f7f7f7;
+    background-color: #252525;
+  }
+
+  .accept-modal-title,
+  .modal-title {
+    color: #f7f7f7;
+  }
+
+  .modal-input {
+    border-color: #f7f7f7;
+    color: #f7f7f7;
+  }
+
+  .modal-input::placeholder {
+    color: #666666;
+  }
+
+  .btn-apply:hover {
+    color: #f7f7f7;
+    background-color: #252525;
+  }
+
+  .note-title {
+    color: #f7f7f7;
+  }
+
+  .input-edit {
+    color: #f7f7f7;
+  }
+
+  .theme-button .theme-icon-moon {
+    display: none;
+  }
+
+  .theme-button .theme-icon-sun {
+    display: block;
+  }
+
+  .editing {
+    background-color: rgba(232, 232, 232, 0.1);
+    box-shadow: 0px 1px 3px rgba(232, 232, 232, 0.1);
+  }
+}

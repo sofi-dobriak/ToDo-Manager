@@ -1,3 +1,5 @@
+import icons from '../img/icons.svg';
+
 export function taskTemplate({ id, taskText, completed }) {
   return `<li class="task-item" data-id="${id}">
             <div class="check-input-text-container">
@@ -10,7 +12,7 @@ export function taskTemplate({ id, taskText, completed }) {
                     >
                     <label class="checkbox" for="note-check-${id}">
                         <svg class="checkbox-label-icon" width="18" height="18">
-                            <use href="assets/icons.svg#icon-check"></use>
+                            <use xlink:href="${icons}#icon-check"></use>
                         </svg>
                     </label>
                 </div>
@@ -25,14 +27,14 @@ export function taskTemplate({ id, taskText, completed }) {
                 <li class="icon-item">
                     <button class="icon-button js-edit" type="button">
                         <svg class="icon-pencil" width="15" height="15">
-                            <use href="assets/icons.svg#icon-pencil"></use>
+                            <use xlink:href="${icons}#icon-pencil"></use>
                         </svg>
                     </button>
                 </li>
                 <li class="icon-item">
                     <button class="icon-button js-delete" type="button">
                         <svg class="icon-trash" width="18" height="18">
-                            <use href="assets/icons.svg#icon-trash"></use>
+                            <use xlink:href="${icons}#icon-trash"></use>
                         </svg>
                     </button>
                 </li>

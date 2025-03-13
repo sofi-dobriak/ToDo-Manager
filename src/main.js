@@ -1,3 +1,5 @@
+import './scss/styles.scss';
+
 import { refs } from './js/refs';
 import searchTask from './js/search-task';
 import {
